@@ -59,6 +59,12 @@ class Decipher {
   private $oNgramScore;
 
   /**
+   * Store the number of keys generated.
+   * @var int
+   */
+  public $iNumKeysGenerated = 0;
+
+  /**
    * Hold some variables to decipher.
    * @param string $sText
    * @param array $aKey
@@ -128,6 +134,7 @@ class Decipher {
           $iChar2 = $this->aKey[$j];
           $this->aKey[$i] = $iChar2;
           $this->aKey[$j] = $iChar1;
+          $this->iNumKeysGenerated++;
 
           $sDecipheredText = $this->runCipher();
 
@@ -150,6 +157,6 @@ class Decipher {
       }
     } while ($bBetterKey);
 
-    return $fScore;
+    return $this->fBestScore;
   }
 }
