@@ -48,3 +48,5 @@ while ($iIterations > 0) {
 // Decrypt the file using our found key.
 $sOutfilename = 'decrypted_text/' . basename($sEncryptedFile, '.txt') . '.decrypted.txt';
 file_put_contents($sOutfilename, $oDecipher->decodeOriginal());
+
+echo "Cipher Key: " . implode("", $oDecipher->aKey) . "\n";
